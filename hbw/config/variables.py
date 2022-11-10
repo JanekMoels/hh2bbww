@@ -244,6 +244,8 @@ def add_variables(config: od.Config) -> None:
         x_title=r"Number of muons",
     )
 
+
+    #for gp in ["h1"]:
     for gp in ["h1", "h2", "b1", "b2", "wlep", "whad", "l", "nu", "q1", "q2", "sec1", "sec2"]:
         config.add_variable(
             name=f"gen_{gp}_pt",
@@ -255,7 +257,7 @@ def add_variables(config: od.Config) -> None:
         config.add_variable(
             name=f"gen_{gp}_mass",
             expression=f"cutflow.{gp}_mass",
-            binning=(40, 0., 400.),
+            binning=(130, 0., 130.),
             unit="GeV",
             x_title=r"$m_{%s}^{gen}$" % (gp),
         )
@@ -272,4 +274,160 @@ def add_variables(config: od.Config) -> None:
             binning=(8, -4, 4),
             unit="GeV",
             x_title=r"$\phi_{%s}^{gen}$" % (gp),
+        )
+    #config.add_variable(
+    #    name=f"gen_DeltaR_bb",
+    #    expression=f"cutflow.DeltaR_bb",
+    #    binning=(70, 0., 7.),
+    #    x_title=r"$\Delta R_{bb}^{gen}$",
+    #)
+    config.add_variable(
+        name=f"gen_DeltaRbb",
+        expression=f"cutflow.DeltaRbb",
+        binning=(70, 0., 7.),
+        x_title=r"$\Delta R_{bb}^{gen}$",
+    )
+    #config.add_variable(
+    #    name=f"gen_DeltaR_WW",
+    #    expression=f"cutflow.DeltaR_WW",
+    #    binning=(70, 0., 7.),
+    #    x_title=r"$\Delta R_{WW}^{gen}$",
+    #)
+    config.add_variable(
+        name=f"gen_DeltaRWW",
+        expression=f"cutflow.DeltaRWW",
+        binning=(70, 0., 7.),
+        x_title=r"$\Delta R_{WW}^{gen}$",
+    )
+    #config.add_variable(
+    #    name=f"gen_DeltaR_qq",
+    #    expression=f"cutflow.DeltaR_qq",
+    #    binning=(70, 0., 7.),
+    #    x_title=r"$\Delta R_{qq}^{gen}$",
+    #)
+    config.add_variable(
+        name=f"gen_DeltaRqq",
+        expression=f"cutflow.DeltaRqq",
+        binning=(70, 0., 7.),
+        x_title=r"$\Delta R_{qq}^{gen}$",
+    )
+    #config.add_variable(
+    #    name=f"gen_DeltaR_jetb1",
+    #    expression=f"cutflow.DeltaR_jetb1",
+    #    binning=(70, 0., 7.),
+    #    x_title=r"$\Delta R_{jetb1}^{gen}$",
+    #)
+    config.add_variable(
+        name=f"reco_DeltaRjb1",
+        expression=f"cutflow.DeltaRjb1",
+        binning=(70, 0., 7.),
+        x_title=r"$\Delta R_{jetb1}^{reco}$",
+    )
+    config.add_variable(
+        name=f"gen_DeltaR_genjetb1",
+        expression=f"cutflow.DeltaR_genjetb1",
+        binning=(70, 0., 7.),
+        x_title=r"$\Delta R_{jetb1}^{gen}$",
+    )
+    #config.add_variable(
+    #    name=f"gen_DeltaR_jetb2",
+    #    expression=f"cutflow.DeltaR_jetb2",
+    #    binning=(70, 0., 7.),
+    #    x_title=r"$\Delta R_{jetb2}^{gen}$",
+    #)
+    config.add_variable(
+        name=f"reco_DeltaRjb2",
+        expression=f"cutflow.DeltaRjb2",
+        binning=(70, 0., 7.),
+        x_title=r"$\Delta R_{jetb2}^{reco}$",
+    )
+    config.add_variable(
+        name=f"gen_DeltaR_genjetb2",
+        expression=f"cutflow.DeltaR_genjetb2",
+        binning=(70, 0., 7.),
+        x_title=r"$\Delta R_{jetb2}^{gen}$",
+    )
+    #config.add_variable(
+    #    name=f"b1_and_b2_in_fatjet",
+    #    expression=f"cutflow.b1_and_b2_in_fatjet",
+    #    binning=(2, 0, 2),
+    #    x_title=r"b1 and b2 in fatjet",
+    #)
+    config.add_variable(
+        name=f"b1_and_b2_in_fatjet_coffea",
+        expression=f"cutflow.b1_and_b2_in_fatjet_coffea",
+        binning=(2, 0, 2),
+        x_title=r"b1 and b2 in fatjet with coffea distance",
+    )
+    config.add_variable(
+        name=f"b1_and_b2_in_genjetak8_coffea",
+        expression=f"cutflow.b1_and_b2_in_genjetak8_coffea",
+        binning=(2, 0, 2),
+        x_title=r"b1 and b2 in GenJetAK8 with coffea distance",
+    )
+    config.add_variable(
+        name=f"FatJet_particleNet_HbbvsQCD",
+        expression=f"cutflow.FatJet_particleNet_HbbvsQCD",
+        binning=(30, 0., 1.),
+        x_title=r"FatJet particleNet HbbvsQCD",
+    )
+    for jet in ["leadingJet", "NleadingJet", "NNleadingJet", "NNNleadingJet"]:
+        config.add_variable(
+            name=f"matched_{jet}_partonFlavour",
+            expression=f"cutflow.{jet}_partonFlavour",
+            binning=(34, -10.5, 23.5),
+            unit="PdgId",
+            x_title=r"$partonFlavour_{%s}^{matched}$" % (jet),
+        )
+        config.add_variable(
+            name=f"matched_{jet}_hadronFlavour",
+            expression=f"cutflow.{jet}_hadronFlavour",
+            binning=(34, -10.5, 23.5),
+            unit="PdgId",
+            x_title=r"$hadronFlavour_{%s}^{matched}$" % (jet),
+        )
+    for genjet in ["leadingGenJet", "NleadingGenJet", "NNleadingGenJet", "NNNleadingGenJet"]:
+        config.add_variable(
+            name=f"gen_{genjet}_partonFlavour",
+            expression=f"cutflow.{genjet}_partonFlavour",
+            binning=(34, -10.5, 23.5),
+            unit="PdgId",
+            x_title=r"$partonFlavour_{%s}^{GenJet}$" % (genjet),
+        )
+        config.add_variable(
+            name=f"gen_{genjet}_hadronFlavour",
+            expression=f"cutflow.{genjet}_hadronFlavour",
+            binning=(34, -10.5, 23.5),
+            unit="PdgId",
+            x_title=r"$hadronFlavour_{%s}^{GenJet}$" % (genjet),
+        )
+    for FatJet in ["leadingFatJet", "NleadingFatJet", "NNleadingFatJet", "NNNleadingFatJet"]:
+        config.add_variable(
+            name=f"matched_{FatJet}_partonFlavour",
+            expression=f"cutflow.{FatJet}_partonFlavour",
+            binning=(34, -10.5, 23.5),
+            unit="PdgId",
+            x_title=r"$partonFlavour_{%s}^{matched}$" % (FatJet),
+        )
+        config.add_variable(
+            name=f"matched_{FatJet}_hadronFlavour",
+            expression=f"cutflow.{FatJet}_hadronFlavour",
+            binning=(34, -10.5, 23.5),
+            unit="PdgId",
+            x_title=r"$hadronFlavour_{%s}^{matched}$" % (FatJet),
+        )
+    for genjetak8 in ["leadingGenJetAK8", "NleadingGenJetAK8", "NNleadingGenJetAK8", "NNNleadingGenJetAK8"]:
+        config.add_variable(
+            name=f"gen_{genjetak8}_partonFlavour",
+            expression=f"cutflow.{genjetak8}_partonFlavour",
+            binning=(34, -10.5, 23.5),
+            unit="PdgId",
+            x_title=r"$partonFlavour_{%s}^{GenJet}$" % (genjetak8),
+        )
+        config.add_variable(
+            name=f"gen_{genjetak8}_hadronFlavour",
+            expression=f"cutflow.{genjetak8}_hadronFlavour",
+            binning=(34, -10.5, 23.5),
+            unit="PdgId",
+            x_title=r"$hadronFlavour_{%s}^{GenJet}$" % (genjetak8),
         )

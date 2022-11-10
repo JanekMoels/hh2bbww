@@ -29,7 +29,7 @@ def gen_hbw_decay_products(self: Producer, events: ak.Array, **kwargs) -> ak.Arr
             raise Exception(f"{msg} in {100 * ak.mean(~arr):.3f}% of cases")
 
     # TODO: for now, this only works for HH->bbWW(qqlnu), but could maybe be generalized to all HH->bbWW decays
-
+    
     # only consider hard process genparticles
     gp = events.GenPart
     gp["index"] = ak.local_index(gp, axis=1)

@@ -135,6 +135,7 @@ dataset_names = [
     "qqHH_CV_1_C2V_2_kl_1_sl_hbbhww_madgraph",
     "qqHH_CV_0p5_C2V_1_kl_1_sl_hbbhww_madgraph",
     "qqHH_CV_1p5_C2V_1_kl_1_sl_hbbhww_madgraph",
+    "hh_ggf_bbtautau_madgraph",
 ]
 for dataset_name in dataset_names:
     dataset = cfg.add_dataset(campaign_run2_2017.get_dataset(dataset_name))
@@ -202,6 +203,12 @@ cfg.set_aux("variable_groups", {
     "test": ["n_jet", "n_electron", "jet1_pt"],
     "cutflow": ["cf_jet1_pt", "cf_jet4_pt", "cf_n_jet", "cf_n_electron", "cf_n_muon"],  # cf_n_deepjet
 })
+
+#config_2017.set_aux("variable_groups", {
+#    "default": ["n_jet", "n_muon", "n_electron", "ht", "m_bb", "deltaR_bb", "jet1_pt"],  # n_deepjet, ....
+#    "test": ["n_jet", "n_electron", "jet1_pt"],
+#    "cutflow": ["gen_jet1_pt", "gen_jet4_pt", "gen_n_jet", "gen_n_electron", "gen_n_muon"],  # cf_n_deepjet
+#})
 
 # shift groups for conveniently looping over certain shifts
 # (used during plotting)

@@ -181,7 +181,10 @@ def default(
     events = self[process_ids](events, **kwargs)
 
     # add cutflow features
-    events = self[cutflow_features](events, results=results, **kwargs)
+    print("here")
+    # from IPython import embed; embed()
+    if kwargs.get("check", True):
+        events = self[cutflow_features](events, results=results, **kwargs)
 
     # increment stats
     self[increment_stats](events, event_sel, stats, **kwargs)
@@ -216,6 +219,8 @@ def gen_hbw(
         raise Exception("This selector is only usable for HH samples")
 
     # run the default Selector
+    kwargs["check"] = False
+    print(f"kwargs: {kwargs}")
     events, results = self[default](events, stats, **kwargs)
 
     # extract relevant gen HH decay products

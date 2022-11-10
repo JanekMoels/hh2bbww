@@ -12,10 +12,13 @@ ak = maybe_import("awkward")
 
 
 @selector(
-    uses={"Jet.pt"},
+    uses={"Jet.pt"
+          "nFatJet", "FatJet.*",
+    },
     produces={
         "cutflow.jet1_pt", "cutflow.jet2_pt", "cutflow.jet3_pt", "cutflow.jet4_pt",
         "cutflow.n_jet", "cutflow.n_electron", "cutflow.n_muon",
+        "cutflow.FatJet_particleNet_HbbvsQCD",
     },
 )
 def cutflow_features(self: Selector, events: ak.Array, results: SelectionResult, **kwargs) -> ak.Array:
@@ -27,6 +30,9 @@ def cutflow_features(self: Selector, events: ak.Array, results: SelectionResult,
         events = set_ak_column(events, f"cutflow.jet{i+1}_pt", Route(f"pt[:, {i}]").apply(jets, EMPTY_FLOAT))
 
     # Number of objects should be counted after appyling
+    padded_particleNet_fatjets = ak.pad_none(events.FatJet.particleNet_HbbvsQCD, 1)
+    events = set_ak_column(events, "cutflow.FatJet_particleNet_HbbvsQCD", padded_particleNet_fatjets[:,0])
+    #from IPython import embed; embed()
     events = set_ak_column(events, "cutflow.n_jet", ak.num(results.objects.Jet.Jet, axis=1))
     events = set_ak_column(events, "cutflow.n_electron", ak.num(results.objects.Electron.Electron, axis=1))
     events = set_ak_column(events, "cutflow.n_muon", ak.num(results.objects.Muon.Muon, axis=1))
