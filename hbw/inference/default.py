@@ -20,14 +20,16 @@ def default(self):
     self.add_category(
         "cat1",
         config_category="1e",
-        config_variable="jet1_pt",
+        config_variable="m_bb",
+        #config_variable="jet1_pt",
         mc_stats=True,
         config_data_datasets=["data_e_b"],
     )
     self.add_category(
         "cat2",
         config_category="1mu",
-        config_variable="jet1_pt",
+        config_variable="m_bb",
+        #config_variable="jet1_pt",
         mc_stats=True,
         config_data_datasets=["data_mu_b"],
     )

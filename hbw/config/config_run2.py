@@ -240,6 +240,16 @@ def add_config(
         "default": ["n_jet", "n_muon", "n_electron", "ht", "m_bb", "deltaR_bb", "jet1_pt"],  # n_deepjet, ....
         "test": ["n_jet", "n_electron", "jet1_pt"],
         "cutflow": ["cf_jet1_pt", "cf_jet4_pt", "cf_n_jet", "cf_n_electron", "cf_n_muon"],  # cf_n_deepjet
+        "control": ["n_jet", "n_fatjet", "n_electron", "n_muon",
+        "jet1_pt", "jet1_eta", "jet1_phi", "jet1_btagDeepB", "jet1_btagDeepFlavB",
+        "jet2_pt", "jet2_eta", "jet2_phi", "jet2_btagDeepB", "jet2_btagDeepFlavB",
+        "jet3_pt", "jet3_eta", "jet3_phi", "jet3_btagDeepB", "jet3_btagDeepFlavB",
+        "jet4_pt", "jet4_eta", "jet4_phi", "jet4_btagDeepB", "jet4_btagDeepFlavB",
+        "fatjet1_pt", "fatjet1_eta", "fatjet1_phi", "fatjet1_btagDeepB", "fatjet1_mass", "fatjet1_msoftdrop",
+        "fatjet1_tau1", "fatjet1_tau2", "fatjet1_tau21",
+        "fatjet2_pt", "fatjet2_eta", "fatjet2_phi", "fatjet2_btagDeepB", "fatjet2_mass", "fatjet2_msoftdrop",
+        "fatjet2_tau1", "fatjet2_tau2", "fatjet2_tau21",
+        "electron_pt", "electron_eta", "electron_phi", "muon_pt", "muon_eta", "muon_phi"],
     }
 
     # shift groups for conveniently looping over certain shifts
@@ -624,12 +634,12 @@ def add_config(
             f"{jet_obj}.{field}"
             for jet_obj in ["Jet", "Bjet", "Lightjet", "VBFJet"]
             # NOTE: if we run into storage troubles, skip Bjet and Lightjet
-            for field in ["pt", "eta", "phi", "mass", "btagDeepFlavB", "hadronFlavour"]
+            for field in ["pt", "eta", "phi", "mass", "btagDeepFlavB", "btagDeepB", "hadronFlavour"]
         ) | set(  # FatJet
             f"FatJet.{field}"
             for field in [
-                "pt", "eta", "phi", "mass", "msoftdrop", "tau1", "tau2", "tau3",
-                "btagHbb", "deepTagMD_HbbvsQCD", "particleNet_HbbvsQCD",
+                "pt", "eta", "phi", "mass", "msoftdrop", "particleNet_HbbvsQCD", "tau1", "tau2","tau3",
+                "btagDeepB", "btagHbb", "deepTagMD_HbbvsQCD",
             ]
         ) | set(  # Leptons
             f"{lep}.{field}"
