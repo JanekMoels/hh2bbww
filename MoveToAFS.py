@@ -68,13 +68,13 @@ plots = [
 
 # String list for path_in (where the plots are created)
 
-strings = ['config_2017_limited/', 'nominal/', 'calib__skip_jecunc/', 'sel__default/', 'prod__features/', 'datasets_ggHH_kl_1_kt_1_sl_hbbhww_powheg/', 'v1/']
-#config = 'config_2017_limited'
+strings = ['config_2017/', 'nominal/', 'calib__skip_jecunc/', 'sel__default/', 'prod__features/', 'datasets_38_3fc8d30155/', 'v1/']
+#config = 'config_2017'
 #shifts = 'nominal'
 #calibration = 'calib__skip_jecunc'
 #selector = 'sel__default'
 #producer = 'prod__features'
-#dataset = 'datasets_ggHH_kl_1_kt_1_sl_hbbhww_powheg'
+#dataset = 'datasets_38_3fc8d30155'
 #version = 'v1'
 
 # ------------------------------------------------------------------------------
@@ -82,7 +82,7 @@ strings = ['config_2017_limited/', 'nominal/', 'calib__skip_jecunc/', 'sel__defa
 def MoveToAFS():
 
     path_in  = '/nfs/dust/cms/user/moelsjan/WorkingArea/DiHiggs/hh2bbww/data/hbw_store/analysis_hbw/cf.PlotVariables1D/'
-    path_out = '/afs/desy.de/user/m/moelsjan/public/controlplots/script/'
+    path_out = '/afs/desy.de/user/m/moelsjan/public/controlplots/control_10.03./'
 
     for string in strings:
         path_in += string
