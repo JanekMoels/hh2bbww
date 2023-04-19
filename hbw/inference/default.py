@@ -55,9 +55,9 @@ def default(self):
         "ggHH_kl_5_kt_1_sl_hbbhww",
         "tt_sl",  # "tt",
         # "ttv", "ttvv",
-        # "st_schannel", "st_tchannel", "st_twchannel",
-        # "dy_lep",
-        # "w_lnu",
+        "st_schannel", "st_tchannel", "st_twchannel",
+        "dy_lep",
+        "w_lnu",
         # "vv",
         # "vvv",
         # "qcd",
@@ -192,7 +192,8 @@ def default(self):
 
     # scale + pdf (shape)
     for proc in processes:
-        for unc in ("murf_envelope", "pdf"):
+        for unc in ["murf_envelope"]:
+        #for unc in ("murf_envelope", "pdf"):
             self.add_parameter(
                 f"{unc}_{proc}",
                 process=inference_procnames.get(proc, proc),
