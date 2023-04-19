@@ -46,12 +46,13 @@ def jj_features(self: Producer, events: ak.Array, **kwargs) -> ak.Array:
 
 
 @producer(
-    uses={"Bjet.pt", "Bjet.eta", "Bjet.phi", "Bjet.mass"},
+    uses={"Bjet.pt", "Bjet.eta", "Bjet.phi", "Bjet.mass", "FatJet.msoftdrop"},
     produces={"m_bb", "deltaR_bb"},
 )
 def bb_features(self: Producer, events: ak.Array, **kwargs) -> ak.Array:
 
     m_bb = (events.Bjet[:, 0] + events.Bjet[:, 1]).mass
+    m_bb = ak.where(ak.num(events.FatJet) > 0, events.FatJet[:,0].msoftdrop, m_bb)
     events = set_ak_column_f32(events, "m_bb", m_bb)
 
     deltaR_bb = events.Bjet[:, 0].delta_r(events.Bjet[:, 1])
