@@ -133,34 +133,34 @@ def add_config(
         "dy_lep_m50_ht1200to2500_madgraph",
         "dy_lep_m50_ht2500_madgraph",
         # QCD (no LHEScaleWeight)
-        "qcd_mu_pt15to20_pythia", "qcd_mu_pt20to30_pythia",
-        "qcd_mu_pt30to50_pythia", "qcd_mu_pt50to80_pythia",
-        "qcd_mu_pt80to120_pythia", "qcd_mu_pt120to170_pythia",
-        "qcd_mu_pt170to300_pythia", "qcd_mu_pt300to470_pythia",
-        "qcd_mu_pt470to600_pythia", "qcd_mu_pt600to800_pythia",
-        "qcd_mu_pt800to1000_pythia", "qcd_mu_pt1000_pythia",
-        "qcd_em_pt15to20_pythia", "qcd_em_pt20to30_pythia",
-        "qcd_em_pt30to50_pythia", "qcd_em_pt50to80_pythia",
-        "qcd_em_pt80to120_pythia", "qcd_em_pt120to170_pythia",
-        "qcd_em_pt170to300_pythia", "qcd_em_pt300toInf_pythia",
-        "qcd_bctoe_pt15to20_pythia", "qcd_bctoe_pt20to30_pythia",
-        "qcd_bctoe_pt30to80_pythia", "qcd_bctoe_pt80to170_pythia",
-        "qcd_bctoe_pt170to250_pythia", "qcd_bctoe_pt250toInf_pythia",
+        #"qcd_mu_pt15to20_pythia", "qcd_mu_pt20to30_pythia",
+        #"qcd_mu_pt30to50_pythia", "qcd_mu_pt50to80_pythia",
+        #"qcd_mu_pt80to120_pythia", "qcd_mu_pt120to170_pythia",
+        #"qcd_mu_pt170to300_pythia", "qcd_mu_pt300to470_pythia",
+        #"qcd_mu_pt470to600_pythia", "qcd_mu_pt600to800_pythia",
+        #"qcd_mu_pt800to1000_pythia", "qcd_mu_pt1000_pythia",
+        #"qcd_em_pt15to20_pythia", "qcd_em_pt20to30_pythia",
+        #"qcd_em_pt30to50_pythia", "qcd_em_pt50to80_pythia",
+        #"qcd_em_pt80to120_pythia", "qcd_em_pt120to170_pythia",
+        #"qcd_em_pt170to300_pythia", "qcd_em_pt300toInf_pythia",
+        #"qcd_bctoe_pt15to20_pythia", "qcd_bctoe_pt20to30_pythia",
+        #"qcd_bctoe_pt30to80_pythia", "qcd_bctoe_pt80to170_pythia",
+        #"qcd_bctoe_pt170to250_pythia", "qcd_bctoe_pt250toInf_pythia",
         # TTV, VV -> ignore?; Higgs -> not used in Msc, but would be interesting
         # Signal
         "ggHH_kl_0_kt_1_sl_hbbhww_powheg",
         "ggHH_kl_1_kt_1_sl_hbbhww_powheg",
         "ggHH_kl_2p45_kt_1_sl_hbbhww_powheg",
         "ggHH_kl_5_kt_1_sl_hbbhww_powheg",
-        "qqHH_CV_1_C2V_1_kl_1_sl_hbbhww_madgraph",
-        "qqHH_CV_1_C2V_1_kl_0_sl_hbbhww_madgraph",
-        "qqHH_CV_1_C2V_1_kl_2_sl_hbbhww_madgraph",
-        "qqHH_CV_1_C2V_0_kl_1_sl_hbbhww_madgraph",
-        "qqHH_CV_1_C2V_2_kl_1_sl_hbbhww_madgraph",
-        "qqHH_CV_0p5_C2V_1_kl_1_sl_hbbhww_madgraph",
-        "qqHH_CV_1p5_C2V_1_kl_1_sl_hbbhww_madgraph",
+        #"qqHH_CV_1_C2V_1_kl_1_sl_hbbhww_madgraph",
+        #"qqHH_CV_1_C2V_1_kl_0_sl_hbbhww_madgraph",
+        #"qqHH_CV_1_C2V_1_kl_2_sl_hbbhww_madgraph",
+        #"qqHH_CV_1_C2V_0_kl_1_sl_hbbhww_madgraph",
+        #"qqHH_CV_1_C2V_2_kl_1_sl_hbbhww_madgraph",
+        #"qqHH_CV_0p5_C2V_1_kl_1_sl_hbbhww_madgraph",
+        #"qqHH_CV_1p5_C2V_1_kl_1_sl_hbbhww_madgraph",
         # HH(bbtautau)
-        "hh_ggf_bbtautau_madgraph",
+        #"hh_ggf_bbtautau_madgraph",
     ]
     for dataset_name in dataset_names:
         dataset = cfg.add_dataset(campaign.get_dataset(dataset_name))
@@ -237,6 +237,16 @@ def add_config(
         "default": ["n_jet", "n_muon", "n_electron", "ht", "m_bb", "deltaR_bb", "jet1_pt"],  # n_deepjet, ....
         "test": ["n_jet", "n_electron", "jet1_pt"],
         "cutflow": ["cf_jet1_pt", "cf_jet4_pt", "cf_n_jet", "cf_n_electron", "cf_n_muon"],  # cf_n_deepjet
+        "control": ["n_jet", "n_fatjet", "n_electron", "n_muon",
+        "jet1_pt", "jet1_eta", "jet1_phi", "jet1_btagDeepFlavB", #"jet1_btagDeepB", 
+        "jet2_pt", "jet2_eta", "jet2_phi", "jet2_btagDeepFlavB", #"jet2_btagDeepB", 
+        "jet3_pt", "jet3_eta", "jet3_phi", "jet3_btagDeepFlavB", #"jet3_btagDeepB", 
+        "jet4_pt", "jet4_eta", "jet4_phi", "jet4_btagDeepFlavB", #"jet4_btagDeepB", 
+        "fatjet1_pt", "fatjet1_eta", "fatjet1_phi", "fatjet1_btagHbb", "fatjet1_deepTagMD_HbbvsQCD", "fatjet1_mass", "fatjet1_msoftdrop",
+        "fatjet1_tau1", "fatjet1_tau2", "fatjet1_tau21",
+        "fatjet2_pt", "fatjet2_eta", "fatjet2_phi", "fatjet2_btagHbb", "fatjet2_deepTagMD_HbbvsQCD", "fatjet2_mass", "fatjet2_msoftdrop",
+        "fatjet2_tau1", "fatjet2_tau2", "fatjet2_tau21",
+        "electron_pt", "electron_eta", "electron_phi", "muon_pt", "muon_eta", "muon_phi"],
     }
 
     # shift groups for conveniently looping over certain shifts
@@ -277,6 +287,8 @@ def add_config(
             proc.name: {"unstack": True, "scale": 10000}
             for proc in cfg.processes if "HH" in proc.name
         },
+        "control": {"ggHH_kl_0_kt_1_sl_hbbhww": {"scale": 90000, "unstack": True}, "ggHH_kl_1_kt_1_sl_hbbhww": {"scale": 90000, "unstack": True},
+        "ggHH_kl_2p45_kt_1_sl_hbbhww": {"scale": 90000, "unstack": True}, "ggHH_kl_5_kt_1_sl_hbbhww": {"scale": 90000, "unstack": True}},
     }
     # when drawing DY as a line, use a different type of yellow
     cfg.x.process_settings_groups["unstack_all"].update({"dy_lep": {"unstack": True, "color": "#e6d800"}})
