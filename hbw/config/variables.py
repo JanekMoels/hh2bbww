@@ -87,14 +87,14 @@ def add_feature_variables(config: od.Config) -> None:
         x_title=r"$\Delta R(j_{1},j_{2})$",
     )
     # FatJet features
-    for i in range(2):
-        config.add_variable(
-            name=f"fatjet{i+1}_tau21",
-            expression=f"FatJet.tau21[:,{i}]",
-            null_value=EMPTY_FLOAT,
-            binning=(40, 0, 1),
-            x_title=r"FatJet %i $\tau_{21}$" % (i + 1),
-        )
+    #for i in range(2):
+    #    config.add_variable(
+    #        name=f"fatjet{i+1}_tau21",
+    #        expression=f"FatJet.tau21[:,{i}]",
+    #        null_value=EMPTY_FLOAT,
+    #        binning=(40, 0, 1),
+    #        x_title=r"FatJet %i $\tau_{21}$" % (i + 1),
+    #    )
 
 
 def add_variables(config: od.Config) -> None:
@@ -218,7 +218,6 @@ def add_variables(config: od.Config) -> None:
             unit="GeV",
             x_title=r"Jet %i mass" % (i + 1),
         )
-        """
         config.add_variable(
             name=f"jet{i+1}_btagDeepB",
             expression=f"Jet.btagDeepB[:,{i}]",
@@ -226,7 +225,6 @@ def add_variables(config: od.Config) -> None:
             binning=(40, 0, 1),
             x_title=r"Jet %i DeepCSV b+bb tag" % (i + 1),
         )
-        """
         config.add_variable(
             name=f"jet{i+1}_btagDeepFlavB",
             expression=f"Jet.btagDeepFlavB[:,{i}]",
@@ -321,6 +319,13 @@ def add_variables(config: od.Config) -> None:
             null_value=EMPTY_FLOAT,
             binning=(40, 0, 1),
             x_title=r"FatJet %i $\tau_2$" % (i + 1),
+        )
+        config.add_variable(
+            name=f"fatjet{i+1}_tau21",
+            expression=f"FatJet.tau21[:,{i}]",
+            null_value=EMPTY_FLOAT,
+            binning=(40, 0, 1),
+            x_title=r"FatJet %i $\tau_{21}$" % (i + 1),
         )
         config.add_variable(
             name=f"fatjet{i+1}_btagHbb",
