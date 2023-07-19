@@ -8,7 +8,7 @@ from columnflow.inference import inference_model, ParameterType, ParameterTransf
 
 
 @inference_model
-def default(self):
+def default_signal_boosted(self):
 
     # TODO: smiliar to the DNN
 
@@ -24,12 +24,43 @@ def default(self):
     # NOTE: use ML model inst if possible
     ml_model_name = "default"
     ml_model_processes = [
-        "ggHH_kl_1_kt_1_sl_hbbhww",
         "tt",
         "st",
         "w_lnu",
         "dy_lep",
     ]
+
+    e_categories.append(self.add_category(
+            f"cat_1e_resolved_ggHH_kl_1_kt_1_sl_hbbhww",
+            config_category=f"1e__resolved__ml_ggHH_kl_1_kt_1_sl_hbbhww",
+            config_variable=f"{ml_model_name}.score_ggHH_kl_1_kt_1_sl_hbbhww_rebin1",
+            mc_stats=True,
+            config_data_datasets=[f"data_e_{i}" for i in ["b", "c", "d", "e", "f"]],
+    ))
+
+    e_categories.append(self.add_category(
+            f"cat_1e_boosted_ggHH_kl_1_kt_1_sl_hbbhww",
+            config_category=f"1e__boosted__ml_ggHH_kl_1_kt_1_sl_hbbhww",
+            config_variable=f"{ml_model_name}.score_ggHH_kl_1_kt_1_sl_hbbhww_rebin1",
+            mc_stats=True,
+            config_data_datasets=[f"data_e_{i}" for i in ["b", "c", "d", "e", "f"]],
+    ))
+
+    mu_categories.append(self.add_category(
+            f"cat_1mu_resolved_ggHH_kl_1_kt_1_sl_hbbhww",
+            config_category=f"1mu__resolved__ml_ggHH_kl_1_kt_1_sl_hbbhww",
+            config_variable=f"{ml_model_name}.score_ggHH_kl_1_kt_1_sl_hbbhww_rebin1",
+            mc_stats=True,
+            config_data_datasets=[f"data_mu_{i}" for i in ["b", "c", "d", "e", "f"]],
+        ))
+
+    mu_categories.append(self.add_category(
+            f"cat_1mu_boosted_ggHH_kl_1_kt_1_sl_hbbhww",
+            config_category=f"1mu__boosted__ml_ggHH_kl_1_kt_1_sl_hbbhww",
+            config_variable=f"{ml_model_name}.score_ggHH_kl_1_kt_1_sl_hbbhww_rebin1",
+            mc_stats=True,
+            config_data_datasets=[f"data_mu_{i}" for i in ["b", "c", "d", "e", "f"]],
+        ))    
 
     for proc in ml_model_processes:
         e_categories.append(self.add_category(
